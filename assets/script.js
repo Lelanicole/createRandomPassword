@@ -59,23 +59,10 @@ var lower = [
   "y",
   "z",
 ];
-var specialCharacter = [
-  "!",
-  "%",
-  "&",
-  ",",
-  "*",
-  "+",
-  "-",
-  ".",
-  "/",
-  "<",
-  ">",
-  "?",
-  "~",
-];
+var special = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?", "~"];
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+var newPassword = "";
 var upperCasePrompt;
 var lowerCasePrompt;
 var lengthPrompt;
@@ -100,7 +87,9 @@ generateBtn.addEventListener("click", writePassword);
 //need to create function  generatePassword (){
 function generatePassword() {
   //prompt user for length
-  var lengthPrompt = prompt("How many characters would you like?,");
+  var lengthPrompt = prompt(
+    "How many characters would you like?, Click OK to confirm"
+  );
   //set length range parameters
   if (lengthPrompt < 8 || lengthPrompt > 128) {
     alert(
@@ -109,7 +98,7 @@ function generatePassword() {
     generatePassword(); //starts prompt again if not within range
   }
 
-  //prompt user to confirm character choices, if/else statements?
+  //prompt user to confirm character choices
 
   lowerCasePrompt = confirm(
     "Would you like your password to include lowercase letters?"
@@ -126,7 +115,37 @@ function generatePassword() {
   numericCharacterPrompt = confirm(
     "Would you like your password to include numbers?"
   );
+  //create an if statement that can calculate random values for each criteria, math methods?
+  //math.floor(Math.random()*array.length)
+  if (lowerCasePrompt) {
+    var lowerCaseCalculation = Math.floor(Math.random() * lower.length);
+    lowerCase = lower[lowerCaseCalculation];
+    newPassword = newPassword.concat(lowerCase);
+    console.log(newPassword);
+  }
 
+  if (upperCasePrompt) {
+    var upperCaseCalculation = Math.floor(Math.random() * upper.length);
+    upperCase = upper[upperCaseCalculation];
+    newPassword = newPassword.concat(upperCase);
+    console.log(newPassword);
+  }
+
+  if (specialCharacterPrompt) {
+    var specialCharacterCalculation = Math.floor(
+      Math.random() * special.length
+    );
+    specialCharacter = special[specialCharacterCalculation];
+    newPassword = newPassword.concat(specialCharacter);
+    console.log(newPassword);
+  }
+
+  if (numericCharacterPrompt) {
+    var numericCharacterCalculaton = Math.floor(Math.random() * number.length);
+    numeric = number[numericCharacterCalculaton];
+    newPassword = newPassword.concat(numeric);
+    console.log(newPassword);
+  }
   //generate the password using user input
 
   //return the generated password.
