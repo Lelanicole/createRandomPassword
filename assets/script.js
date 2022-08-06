@@ -97,9 +97,7 @@ function generatePassword() {
     );
     generatePassword(); //starts prompt again if not within range
   }
-
   //prompt user to confirm character choices
-
   lowerCasePrompt = confirm(
     "Would you like your password to include lowercase letters?"
   );
@@ -115,9 +113,24 @@ function generatePassword() {
   numericCharacterPrompt = confirm(
     "Would you like your password to include numbers?"
   );
+
+  //create if condition where if nothing is selected, user is prompted to beginning
+  if (
+    !lowerCasePrompt &&
+    !upperCasePrompt &&
+    !specialCharacterPrompt &&
+    !numericCharacterPrompt
+  ) {
+    alert(
+      "Password must contain at least one of the following criteria :uppercase letters, lowercase letters, special characters, and numbers.  Please try again."
+    );
+    return;
+  }
+
   //create an if statement that can calculate random values for each criteria, math methods?
   //math.floor(Math.random()*array.length)
   if (lowerCasePrompt) {
+    calculate++;
     var lowerCaseCalculation = Math.floor(Math.random() * lower.length);
     lowerCase = lower[lowerCaseCalculation];
     newPassword = newPassword.concat(lowerCase);
@@ -125,6 +138,7 @@ function generatePassword() {
   }
 
   if (upperCasePrompt) {
+    calculate++;
     var upperCaseCalculation = Math.floor(Math.random() * upper.length);
     upperCase = upper[upperCaseCalculation];
     newPassword = newPassword.concat(upperCase);
@@ -132,6 +146,7 @@ function generatePassword() {
   }
 
   if (specialCharacterPrompt) {
+    calculate++;
     var specialCharacterCalculation = Math.floor(
       Math.random() * special.length
     );
@@ -141,11 +156,13 @@ function generatePassword() {
   }
 
   if (numericCharacterPrompt) {
+    calculate++;
     var numericCharacterCalculaton = Math.floor(Math.random() * number.length);
     numeric = number[numericCharacterCalculaton];
     newPassword = newPassword.concat(numeric);
     console.log(newPassword);
   }
+
   //generate the password using user input
 
   //return the generated password.
