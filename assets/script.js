@@ -76,12 +76,16 @@ var specialCharacter = [
 ];
 var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
+var upperCasePrompt;
+var lowerCasePrompt;
+var lengthPrompt;
+var specialCharacterPrompt;
+var numericCharacterPrompt;
 var upperCase;
 var lowerCase;
-var length = "";
 var specialCharacter;
-var numericCharacter;
-
+var numeric;
+var calculate = 0;
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -96,18 +100,32 @@ generateBtn.addEventListener("click", writePassword);
 //need to create function  generatePassword (){
 function generatePassword() {
   //prompt user for length
-  var length = prompt("How many characters would you like?");
+  var lengthPrompt = prompt("How many characters would you like?,");
   //set length range parameters
-  if (length < 8 || length > 128) {
+  if (lengthPrompt < 8 || lengthPrompt > 128) {
     alert(
-      "Character length must be between 8 and 128 characters, please try again"
+      "Character length must be between 8 and 128 characters, please try again, or click 'Cancel' to exit."
     );
     generatePassword(); //starts prompt again if not within range
-  } else {
-    //create else that starts special case prompt
   }
 
-  //prompt user to confirm character choices
+  //prompt user to confirm character choices, if/else statements?
+
+  lowerCasePrompt = confirm(
+    "Would you like your password to include lowercase letters?"
+  );
+
+  upperCasePrompt = confirm(
+    "Would you like your password to include capital letters?"
+  );
+
+  specialCharacterPrompt = confirm(
+    "Would you like your password to include special characters?"
+  );
+
+  numericCharacterPrompt = confirm(
+    "Would you like your password to include numbers?"
+  );
 
   //generate the password using user input
 
