@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 //declare variables
 //make list for character letters, numbers, special characters
-var upper = [
+const upper = [
   "A",
   "B",
   "C",
@@ -31,7 +31,7 @@ var upper = [
   "Y",
   "Z",
 ];
-var lower = [
+const lower = [
   "a",
   "b",
   "c",
@@ -59,20 +59,34 @@ var lower = [
   "y",
   "z",
 ];
-var special = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?", "~"];
-var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+const special = [
+  "!",
+  "%",
+  "&",
+  ",",
+  "*",
+  "+",
+  "-",
+  ".",
+  "/",
+  "<",
+  ">",
+  "?",
+  "~",
+];
+const number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 
-var newPassword = "";
+
 var upperCasePrompt;
 var lowerCasePrompt;
-var lengthPrompt;
+var chooseLengthPrompt;
 var specialCharacterPrompt;
 var numericCharacterPrompt;
 var upperCase;
 var lowerCase;
 var specialCharacter;
 var numeric;
-var calculate = 0;
+var chosenCharacter = "";
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -87,83 +101,91 @@ generateBtn.addEventListener("click", writePassword);
 //need to create function  generatePassword (){
 function generatePassword() {
   //prompt user for length
-  var lengthPrompt = prompt(
+  chooseLengthP = prompt(
     "How many characters would you like?, Click OK to confirm"
   );
   //set length range parameters
-  if (lengthPrompt < 8 || lengthPrompt > 128) {
+  if (chooseLengthP <= 7 || chooseLengthP >= 128) {
     alert(
       "Character length must be between 8 and 128 characters, please try again, or click 'Cancel' to exit."
     );
     generatePassword(); //starts prompt again if not within range
+  } else {//prompt user to confirm character choices
+    lowerCasePrompt = confirm(
+      "Would you like your password to include lowercase letters?"
+    );
+  
+    upperCasePrompt = confirm(
+      "Would you like your password to include capital letters?"
+    );
+  
+    specialCharacterPrompt = confirm(
+      "Would you like your password to include special characters?"
+    );
+  
+    numericCharacterPrompt = confirm(
+      "Would you like your password to include numbers?"
+    );
   }
-  //prompt user to confirm character choices
-  lowerCasePrompt = confirm(
-    "Would you like your password to include lowercase letters?"
-  );
-
-  upperCasePrompt = confirm(
-    "Would you like your password to include capital letters?"
-  );
-
-  specialCharacterPrompt = confirm(
-    "Would you like your password to include special characters?"
-  );
-
-  numericCharacterPrompt = confirm(
-    "Would you like your password to include numbers?"
-  );
-
+  
   //create if condition where if nothing is selected, user is prompted to beginning
   if (
-    !lowerCasePrompt &&
-    !upperCasePrompt &&
-    !specialCharacterPrompt &&
-    !numericCharacterPrompt
+    lowerCasePrompt === false &&
+    upperCasePrompt === false &&
+    specialCharacterPrompt === false &&
+    numericCharacterPrompt === false
   ) {
     alert(
-      "Password must contain at least one of the following criteria :uppercase letters, lowercase letters, special characters, and numbers.  Please try again."
+      "Password must contain at least one character type.  Please try again."
     );
     return;
-  }
+    //create else if based on a single criteria being chosen
+  } else if (lowerCasePrompt) {
+    chosenCharacter = lower;
+  } else if (upperCasePrompt) {
+    chosenCharacter = upper;
+  } else if (specialCharacterPrompt) {
+    chosenCharacter = special;
+  } else if (numericCharacterPrompt) {
+    chosenCharacter = number;
+  } else //create else if based on any two criteria being chosen
+    if (lowerCasePrompt && upperCasePrompt) {
+      chosenCharacter = lower.concat(upper);
+    } else if (lowerCasePrompt && specialCharacterPrompt) {
+      chosenCharacter = lower.concat(special);
+    } else if (lowerCasePrompt && numericCharacterPrompt) {
+      chosenCharacter = lower.concat(number);
+    } else if (upperCasePrompt && specialCharacterPrompt) {
+      chosenCharacter = upper.concat(special);
+    } else if (upperCasePrompt && numericCharacterPrompt) {
+      chosenCharacter = upper.concat(number);
+    } else if (specialCharacterPrompt) {
+      chosenCharacter = special.concat(number);
+    } else //create else if based on any 3 criteria being chosen
+      if (lowerCasePrompt && upperCasePrompt && specialCharacterPrompt) {
+        chosenCharacter = lower.concat(upper, special);
+      } else if (lowerCasePrompt && specialCharacterPrompt && numericCharacterPrompt) {
+        chosenCharacter = lower.concat(special, number);
+      } else if (lowerCasePrompt && upperCasePrompt && numericCharacterPrompt) {
+        chosenCharacter = lower.concat(upper, number); 
+      } else if (upperCasePrompt && specialCharacterPrompt && numericCharacterPrompt) {
+        chosenCharacter = upper.concat(special, number);
+      } else //create else if based on all 4 criteria being chosen
+        if (lowerCasePrompt && upperCasePrompt && specialCharacterPrompt && numericCharacterPrompt) {
+          chosenCharacter = lower.concat(upper, special, number);
+        }
 
-  //create an if statement that can calculate random values for each criteria, math methods?
-  //math.floor(Math.random()*array.length)
-  if (lowerCasePrompt) {
-    calculate++;
-    var lowerCaseCalculation = Math.floor(Math.random() * lower.length);
-    lowerCase = lower[lowerCaseCalculation];
-    newPassword = newPassword.concat(lowerCase);
-    console.log(newPassword);
-  }
-
-  if (upperCasePrompt) {
-    calculate++;
-    var upperCaseCalculation = Math.floor(Math.random() * upper.length);
-    upperCase = upper[upperCaseCalculation];
-    newPassword = newPassword.concat(upperCase);
-    console.log(newPassword);
-  }
-
-  if (specialCharacterPrompt) {
-    calculate++;
-    var specialCharacterCalculation = Math.floor(
-      Math.random() * special.length
-    );
-    specialCharacter = special[specialCharacterCalculation];
-    newPassword = newPassword.concat(specialCharacter);
-    console.log(newPassword);
-  }
-
-  if (numericCharacterPrompt) {
-    calculate++;
-    var numericCharacterCalculaton = Math.floor(Math.random() * number.length);
-    numeric = number[numericCharacterCalculaton];
-    newPassword = newPassword.concat(numeric);
-    console.log(newPassword);
-  }
-
-  //generate the password using user input
-
-  //return the generated password.
+   
+    
 }
+//generate the password using user input
+function createRandomPassword() {
+  
+  }
+
+  //create a for loop to calculate password
+  for (i = 0; i < ; i++) {
+    
+}
+
+//return the generated password.
