@@ -1,4 +1,4 @@
-# passwordGeneratorProject
+# createRandomPassword
 
 This project creates an application that allows the user to create a random password by selecting certain criteria. When the user has completed choosing their criteria they will be given a new random password.
 
@@ -20,7 +20,7 @@ In order to install:
 
 7. Open your preferred code editor and open the "index.html" document in the "Develop" folder to view the HTML code. To open "style.css", navigate to Develop -> assets -> css -> style.css. To open the script file navigate to Develop-> assets -> js -> script.js.
 
-8. To view the passwordGeneratorProject application in your browser, right-click on the "index.html" file and select "Open in Browser"
+8. To view the createRandomPassword application in your browser, right-click on the "index.html" file and select "Open in Browser"
 
 ## Usage
 
@@ -77,7 +77,7 @@ Guidance was provided to me on this project from the University of Denver Coding
 
 MIT License
 
-Copyright (c) [2022] [passwordGeneratorProject]
+Copyright (c) [2022] [createRandomPassword]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
