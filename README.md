@@ -32,7 +32,7 @@ In order to install:
 
 4. Right-click on the "index.html" tab at the top of your code editor, which should look something like the following image.
 
-![Application](../createRandomPassword/assets/images/fullPageGenerator.png)
+![Application](assets\images\fullPageGenerator.png)
 
 5. When the user clicks the "Generate Password" button a prompt is generated that asks the user to enter how many characters they wish their password to contain.
 
