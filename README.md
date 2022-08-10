@@ -32,24 +32,24 @@ In order to install:
 
 4. Right-click on the "index.html" tab at the top of your code editor, which should look something like the following image.
 
-![Application](assets\images\fullPageGenerator.png)
+![Application](/assets/images/fullPageGenerator.png)
 
 5. When the user clicks the "Generate Password" button a prompt is generated that asks the user to enter how many characters they wish their password to contain.
 
-![lengthPrompt](../createRandomPassword/assets/images/characterLengthPrompt.png)
+![lengthPrompt](/assets/images/characterLengthPrompt.png)
 
 6. After entering the character length the user wishes to have in their password, they are guided through a series of prompts to select which criteria they would like to include in their new password.
 
-![lowerCase](../createRandomPassword/assets/images/lowercaseLetters.png)
+![lowerCase](/assets/images/lowercaseLetters.png)
 
-![upperCase](../createRandomPassword/assets/images/capitalLetters.png)
+![upperCase](/assets/images/capitalLetters.png)
 
-![specialCharacters](../createRandomPassword/assets/images/specialCharacters.png)
+![specialCharacters](/assets/images/specialCharacters.png)
 
-![numbers](../createRandomPassword/assets/images/numbersScreenshot.png)
+![numbers](/assets/images/numbersScreenshot.png)
 
 7. After the user has selected the criteria they wish to include in their new password, they are then generated a random password.  
-   ![newPassword](../createRandomPassword/assets/images/randomPassword.png)
+   ![newPassword](/assets/images/randomPassword.png)
 
 ## Links
 
