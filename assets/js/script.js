@@ -119,11 +119,16 @@ function generatePassword() {
     }
     console.log(chosenCharacter);
   }
-  if ((chosenCharacter = [])) {
-    chosenCharacter = alert(
+  if (
+    !upperCasePrompt &&
+    !lowerCasePrompt &&
+    !specialCharacterPrompt &&
+    !numericCharacterPrompt
+  ) {
+    alert(
       "Password must contain at least one character type.  Please try again."
     );
-    generatePassword();
+    lengthPrompt();
   }
 
   var newPassword = "";
